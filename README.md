@@ -88,25 +88,36 @@ examples for your environment.
 
 ##### counter
 
-Type: `boolean`  
+Type: `boolean`
 Default: `true`
 
 Pass `false` to disable reducing `content`, `counter-reset` and `counter-increment` declarations.
 
 ##### keyframes
 
-Type: `boolean`  
+Type: `boolean`
 Default: `true`
 
 Pass `false` to disable reducing `keyframes` rules and `animation` declarations.
 
 ##### counterStyle
 
-Type: `boolean`  
+Type: `boolean`
 Default: `true`
 
 Pass `false` to disable reducing `counter-style` rules and `list-style` and `system` declarations.
 
+
+##### encoder
+
+Type: `function`
+Default: [`lib/encode.js`](https://github.com/ben-eb/postcss-reduce-idents/blob/master/src/lib/encode.js)
+
+Pass a custom function to encode the identifier with (e.g.: as a way of prefixing them automatically).
+
+It receives two parameters:
+  - A `Number` identifying the index of the occurrence.
+  - A `String` with the node value.
 
 ## Contributing
 
