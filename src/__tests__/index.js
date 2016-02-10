@@ -113,6 +113,19 @@ const tests = [{
         'body{counter-reset:section}h3:before{counter-increment:section;content:"Section" counter(section) ": "}'
     ].join(''),
     options: {counter: false}
+}, {
+    message: '',
+    fixture: [
+        '@keyframes whiteToBlack{0%{color:#fff}to{color:#000}}.one{animation: 100ms whiteToBlack}',
+        '@counter-style custom{system:extends decimal;suffix:"> "}ol{list-style:custom}',
+        'body{counter-reset:section}h3:before{counter-increment:section;content:"Section" counter(section) ": "}'
+    ].join(''),
+    expected: [
+        '@keyframes PREFIXwhiteToBlack{0%{color:#fff}to{color:#000}}.one{animation: 100ms PREFIXwhiteToBlack}',
+        '@counter-style PREFIXcustom{system:extends decimal;suffix:"> "}ol{list-style:PREFIXcustom}',
+        'body{counter-reset:PREFIXsection}h3:before{counter-increment:PREFIXsection;content:"Section" counter(PREFIXsection) ": "}'
+    ].join(''),
+    options: {encoder: (i, val) => `PREFIX${val}`}
 }];
 
 tests.forEach(test => {
