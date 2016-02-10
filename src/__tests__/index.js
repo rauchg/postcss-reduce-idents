@@ -125,7 +125,7 @@ const tests = [{
         '@counter-style PREFIXcustom{system:extends decimal;suffix:"> "}ol{list-style:PREFIXcustom}',
         'body{counter-reset:PREFIXsection}h3:before{counter-increment:PREFIXsection;content:"Section" counter(PREFIXsection) ": "}'
     ].join(''),
-    options: {encoder: (i, val) => `PREFIX${val}`}
+    options: {encoder: val => `PREFIX${val}`}
 }];
 
 tests.forEach(test => {
@@ -143,7 +143,7 @@ ava('encoder', t => {
     let cache = [];
 
     arr.map(num => {
-        let encoded = encode(num);
+        let encoded = encode(null, num);
         cache.push(encoded);
         let indexes = cache.filter(c => c === encoded);
         t.same(indexes.length, 1, encoded + ' should be returned only once');

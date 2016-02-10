@@ -15,7 +15,7 @@ function transformAtRule (css, atRuleRegex, propRegex, encoder) {
         if (node.type === 'atrule' && atRuleRegex.test(node.name)) {
             if (!cache[node.params]) {
                 cache[node.params] = {
-                    ident: encoder(Object.keys(cache).length, node.params),
+                    ident: encoder(node.params, Object.keys(cache).length),
                     count: 0
                 };
             }
@@ -59,7 +59,7 @@ function transformDecl (css, propOneRegex, propTwoRegex, encoder) {
                 if (node.type === 'word' && !isNum(node)) {
                     if (!cache[node.value]) {
                         cache[node.value] = {
-                            ident: encoder(Object.keys(cache).length, node.value),
+                            ident: encoder(node.value, Object.keys(cache).length),
                             count: 0
                         };
                     }
