@@ -116,8 +116,8 @@ Default: [`lib/encode.js`](https://github.com/ben-eb/postcss-reduce-idents/blob/
 Pass a custom function to encode the identifier with (e.g.: as a way of prefixing them automatically).
 
 It receives two parameters:
-  - A `Number` identifying the index of the occurrence.
   - A `String` with the node value.
+  - A `Number` identifying the index of the occurrence.
 
 ## Contributing
 
